@@ -2,16 +2,21 @@ package ProjetoBloco1;
 
 import java.util.Scanner;
 
-public class Filme {
+public abstract  class Filme {
 	
 	private String nome;
 	private String categoria; 
 	private int duracao; 
 	private String classificacaoIndicativa; 
 	private int momento;  
-	private String descricao;
+	protected String descricao;
+	private int nota;
+	private int contaNota;
 	
-	public Filme(String nome, String categoria, int duracao, String classificacaoIndicativa, int momento, String descricao)
+Scanner read = new Scanner(System.in);
+	
+	public Filme(String nome, String categoria, int duracao, String classificacaoIndicativa, 
+			int momento, String descricao)
 	
 	{
 		setNome(nome);
@@ -20,15 +25,37 @@ public class Filme {
 		setClassificacaoIndicativa(classificacaoIndicativa);
 		setMomento(momento);
 		setDescricao(descricao);
-		
+		nota=0;
+		contaNota=0;
 	}
-
+	
+	abstract public void mensagemInicio();
+	
+	abstract public void efeitoVisual();
+	
+	
 	public String getNome() {
 		return nome;
 	}
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public int getNota() {
+		return nota;
+	}
+
+	public void setNota(int nota) {
+		this.nota = nota;
+	}
+
+	public int getContaNota() {
+		return contaNota;
+	}
+
+	public void setContaNota(int contaNota) {
+		this.contaNota = contaNota;
 	}
 
 	public String getCategoria() {
@@ -80,71 +107,4 @@ public class Filme {
         
 	}
 	
-	/*
-	public lista Favoritar(Usuario x) 
-	{
-		x.addFilme;
-		return lista; 
-        
-     }
-	*/
-	
-	
-	public void rodar()
-	{
-		System.out.println("Selecione o idioma: (1-PT | 2-EN | 3-ES)");
-		
-		Scanner leia = new Scanner(System.in);
-		
-		int x = leia.nextInt();
-		
-	    
-
-		if(x < 0 || x > 3){
-		     while(x < 0 || x > 3){
-		         System.out.println("Idioma inválido! Digite novamente.");
-		         x = leia.nextInt();
-		     }
-		}
-
-		
-		System.out.println("Gostaria de uma legenda? (1-PT | 2-EN | 3-ES | 4-Sem legenda)" );
-		
-		int y = leia.nextInt();
-		
-		if(y < 0 || y > 4){
-		     while(y < 0 || y > 4){
-		         System.out.println("Opção inválida! Digite novamente.");
-		         y = leia.nextInt();
-		     }
-		}
-		
-		if(x == 1 ) {
-			
-			System.out.println("Bom filme! ");
-		}
-		
-		if(x == 2 ) {
-		
-			System.out.println("Have a nice movie! ");
-		}
-		
-		if(x == 3 ) {
-			System.out.println("Buena película! ");
-		}
-	
-		
-	}
-	
-  
-	public void parar()
-	{
-		System.out.println("Ficaremos com saudades... ");
-	}
-	
-	public void pausar()
-	{
-		System.out.println("Estamos te esperando! ");
-	}
-
 }
